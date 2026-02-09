@@ -1,1 +1,10 @@
-
+services:
+  app:
+    build: ./backend
+    restart: always  # <-- This is the magic line
+    ports:
+      - "3000:3000"
+  turn:
+    image: instrumentisto/coturn
+    restart: always  # <-- This ensures IP masking stays on
+    network_mode: "host"
